@@ -16,6 +16,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      -  uses: actions/checkout@v2
+         if: github.base_ref == 'main'
+         with: 
+          ref: main
+          token: ${{ secrets.CI_TOKEN }}
+          
       - uses: axves1/publish-to-nexus@main
         env:
           NEXUS_NPM_TOKEN: ${{ secrets.NEXUS_NPM_TOKEN }}
