@@ -20,10 +20,15 @@ jobs:
         with: 
           ref: main
           token: ${{ secrets.CI_TOKEN }}
+      - run: |
+          pwd
+          ls -l          
           
       - uses: axves1/publish-to-nexus@main
         env:
-          NEXUS_NPM_TOKEN: ${{ secrets.NEXUS_NPM_TOKEN }}
+          NEXUS_NPM_TOKEN: test_token #${{ secrets.NEXUS_NPM_TOKEN }}
+          
+      - run: cat .npmrc
         
       
 
